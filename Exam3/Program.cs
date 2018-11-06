@@ -18,22 +18,15 @@ namespace Exam3
             var lista = new List<Contador>();
             foreach (var caracter in cadena)
             {
-                if(lista.Count==0)
+                var elemento = lista.Where(p => p.Letra == caracter);
+                var selected = elemento.FirstOrDefault();
+                if (selected != null)
                 {
-                    lista.Add(new Contador(){Letra=caracter, Repeticiones=1});
+                    selected.Repeticiones++;
                 }
                 else
                 {
-                    var elemento = lista.Where(p => p.Letra == caracter);
-                    var selected = elemento.FirstOrDefault();
-                    if (selected != null)
-                    {
-                        selected.Repeticiones++;
-                    }
-                    else
-                    {
-                        lista.Add(new Contador() {Letra = caracter, Repeticiones = 1});
-                    }
+                    lista.Add(new Contador() {Letra = caracter, Repeticiones = 1});
                 }
             }
 
